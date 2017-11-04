@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.linus</groupId>
+	<artifactId>MavenTest</artifactId>
+	<packaging>war</packaging>
+	<version>1.0</version>
+	<description>This is a project to test maven features done by Linus.Yan. Maven is a good tool to do build.</description>
+	<url>localhost:8080/MavenTest</url>
+	
+	<organization>
+		<name>eBay</name>
+		<url>http://www.ebay.com</url>
+	</organization>
+	
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<comments>
+				Copyright 2013 Linus.Yan
+	
+				Licensed under the Apache License, Version 2.0 (the "License");
+				you may not use this file except in compliance with the License.
+				You may obtain a copy of the License at
+				
+				    http://www.apache.org/licenses/LICENSE-2.0
+				
+				Unless required by applicable law or agreed to in writing, software
+				distributed under the License is distributed on an "AS IS" BASIS,
+				WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+				See the License for the specific language governing permissions and
+				limitations under the License.
+			</comments>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	<issueManagement>
+		<system>Bugzilla</system>
+		<url>http://127.0.0.1/bugzilla</url>
+	</issueManagement>
+	
+	<ciManagement>
+		<system>continuum</system>
+		<url>http://localhost:8080</url>
+		<notifiers>
+			<notifier>
+				<type>mail</type>
+				<address>lyan2@ebay.com</address>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>true</sendOnSuccess>
+				<sendOnWarning>true</sendOnWarning>
+				<!-- <configuration></configuration> -->
+			</notifier>
+		</notifiers>
+	</ciManagement>
+	
+	<!-- <scm>
+		<connection>scm:git:https://github.scm.corp.ebay.com/CCOE-CBT/AMS-Phase1.git</connection>
+		<developerConnection>scm:git:https://github.scm.corp.ebay.com/CCOE-CBT/AMS-Phase1.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.scm.corp.ebay.com/CCOE-CBT/AMS-Phase1</url>
+	</scm> -->
+	
+	<!-- <distributionManagement>
+		<site>
+			<
+		</site>
+	</distributionManagement> -->
+
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
+	
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<directory>${basedir}/build</directory>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+		<filters>
+			<filter>src/main/filters/filter.properties</filter>
+		</filters>
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>${basedir}/src/main/resources</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.properties</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<!-- This is a built-in plugin of maven -->
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<executions>
+					<execution>
+						<id>default-war</id>
+						<phase>package</phase>
+						<goals>
+							<goal>war</goal>
+						</goals>
+						<configuration>
+							<!-- package /WEB-INF/classes into JAR -->
+							<attachClasses>true</attachClasses>
+							<!-- warSourceDirectory default value is ${basedir}/src/main/webapp -->
+							<warSourceDirectory>${basedir}/WebContent</warSourceDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-resources-plugin</artifactId> 
+				<version>2.6</version> <inherited>true</inherited> <executions> <execution> 
+				<goals> <goal>resources</goal> </goals> <phase>install</phase> </execution> 
+				</executions> </plugin> -->
+		</plugins>
+	</build>
+	
+	<mailingLists>
+		<mailingList>
+			<name>Developers</name>
+			<subscribe>lyan2@ebay.com</subscribe>
+			<unsubscribe>lyan2@ebay.com</unsubscribe>
+			<post>lyan2@ebay.com</post>
+		</mailingList>
+	</mailingLists>
+	
+	<developers>
+		<developer>
+			<id>lyan2</id>
+			<name>Linus Yan</name>
+			<email>lyan2@ebay.com</email>
+			<organization>eBay</organization>
+			<timezone>+8</timezone>
+			<url>http://fdsfdsf</url>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
+	
+	<contributors>
+		<contributor>
+			<name>Linus Yan</name>
+			<email>lyan2@ebay.com</email>
+			<organization>eBay</organization>
+			<timezone>+8</timezone>
+			<url>http://fdsfdsf</url>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</contributor>
+	</contributors>
+	
+<!-- 	<profiles>
+		<profile>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<jdk>1.5</jdk>
+			</activation>
+		</profile>
+	</profiles> -->
+</project>
